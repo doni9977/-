@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cesium Globe</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Cesium.js"></script>
+    <style>
+      @import url("https://cesium.com/downloads/cesiumjs/releases/1.87/Build/Cesium/Widgets/widgets.css");
+      #cesiumContainer {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cesiumContainer"></div>
+    <script>
+      Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyMDkwMGY1Ny02NDljLTRmYzMtOWZjZS03N2FkMDExMDdiZmYiLCJpZCI6MTcwNjc4LCJpYXQiOjE2OTY3ODY1NTZ9.6eYlMc0_z8EgbzDqCi3rTofdqfuWo6R94c0B-e-wyNA';
+
+      var viewer = new Cesium.Viewer("cesiumContainer");
+
+      var imageryLayers = viewer.imageryLayers;
+      imageryLayers.removeAll();
+
+      imageryLayers.addImageryProvider(
+        new Cesium.SingleTileImageryProvider({
+          url: "https://www.solarsystemscope.com/textures/download/8k_earth_daymap.jpg",
+          rectangle: Cesium.Rectangle.fromDegrees(-169.01773831043698, -69.196652033098, 160.37680136901605, 88.8526811334104),
+        })
+      );
+    </script>
+  </body>
+</html>
